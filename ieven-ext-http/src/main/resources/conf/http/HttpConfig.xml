@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<content>
+	<!-- http请求配置段begin -->
+	
+	<!-- 连接超时时间 -->
+	<leaf key="connectTimeout" value="6000" />
+	<!-- socket超时时间 -->
+	<leaf key="socketTimeout" value="6000" />
+	<!-- 连接池中最大存在线程数(当服务反应时间较长时可适当增大此值) -->
+	<leaf key="maxTotal" value="500" />
+	<!-- 池中同一时间能够请求同一url的线程数（只有一个url时，建议设成相等） -->
+	<leaf key="defaultMaxPerRoute" value="500" />
+	<!-- 当池中所有线程繁忙时，等待队列中线程等待最长时间 -->
+	<leaf key="connectionRequestTimeout" value="10000" />
+	<!-- http请求配置段end -->
+	
+</content>

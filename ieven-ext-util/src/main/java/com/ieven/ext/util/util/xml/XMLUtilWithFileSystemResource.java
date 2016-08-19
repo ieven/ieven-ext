@@ -4,20 +4,33 @@ package com.ieven.ext.util.util.xml;
 import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
+import java.net.JarURLConnection;
+import java.net.URISyntaxException;
+import java.net.URLConnection;
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Enumeration;
 import java.util.HashMap;
+import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
+import java.util.jar.JarEntry;
+import java.util.jar.JarFile;
+import java.util.zip.ZipException;
 
 import org.dom4j.Document;
 import org.dom4j.DocumentException;
 import org.dom4j.Element;
 import org.dom4j.io.SAXReader;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import com.ieven.ext.util.excepiton.InstanceException;
 import com.ieven.ext.util.io.FileSystemResource;
 import com.ieven.ext.util.io.Resource;
 import com.ieven.ext.util.util.Assert;
+import com.ieven.ext.util.util.ResourceUtils;
 import com.ieven.ext.util.util.StringUtils;
 
 
@@ -33,6 +46,7 @@ public class XMLUtilWithFileSystemResource {
 	private SAXReader reader;
 	private Document document;
 
+	private static final Logger logger = LoggerFactory.getLogger(XMLUtilWithFileSystemResource.class);
 	/**
 	 * 构造函数
 	 * 

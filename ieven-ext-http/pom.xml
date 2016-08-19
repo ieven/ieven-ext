@@ -1,0 +1,55 @@
+<?xml version="1.0"?>
+<project
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd"
+	xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+	<modelVersion>4.0.0</modelVersion>
+	<parent>
+		<groupId>com.ieven</groupId>
+		<artifactId>ieven-ext</artifactId>
+		<version>1.0.0</version>
+	</parent>
+	<groupId>com.ieven</groupId>
+	<artifactId>ieven-ext-http</artifactId>
+	<version>1.0.0</version>
+	<name>ieven-ext-http</name>
+
+	<properties>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<httpclient.version>4.5.1</httpclient.version>
+		<util.version>1.0.0</util.version>
+		<jackson.version>2.7.4</jackson.version>
+	</properties>
+	<dependencies>
+		<!-- 添加自己的工具 begin -->
+		<dependency>
+			<groupId>com.ieven</groupId>
+			<artifactId>ieven-ext-util</artifactId>
+			<version>${util.version}</version>
+		</dependency>
+		<!-- 添加自己的工具 end -->
+		<!-- httpclient包 begin -->
+		<dependency>
+			<groupId>org.apache.httpcomponents</groupId>
+			<artifactId>httpclient</artifactId>
+			<version>${httpclient.version}</version>
+		</dependency>
+		<!-- httpclient包 end -->
+		<!-- json依赖包 begin -->
+		<dependency>
+			<groupId>com.fasterxml.jackson.core</groupId>
+			<artifactId>jackson-databind</artifactId>
+			<version>${jackson.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>com.fasterxml.jackson.core</groupId>
+			<artifactId>jackson-core</artifactId>
+			<version>${jackson.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>com.fasterxml.jackson.core</groupId>
+			<artifactId>jackson-annotations</artifactId>
+			<version>${jackson.version}</version>
+		</dependency>
+		<!-- json依赖包 end -->
+	</dependencies>
+</project>
