@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<content>
+	<!-- 阿里OCS memcache begin -->
+	
+	<!-- 地址 -->
+	<leaf key="host" value="0b2bcc6b2e1b471b.m.cnbjalicm12pub001.ocs.aliyuncs.com" />
+	<!-- 端口 -->
+	<leaf key="port" value="11211" />
+	<!-- 用户名 -->
+	<leaf key="username" value="0b2bcc6b2e1b471b" />
+	<!-- 密码 -->
+	<leaf key="password" value="8LeZnSnb51qa48R0" />
+	
+	<!-- 阿里OCS memcache end -->
+	
+</content>

@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<content>
+	<!-- 数据堂配置段begin -->
+	
+	<!-- apikey -->
+	<leaf key="apikey" value="221e6ae238d53fc91a595f39059c6951" />
+	<!-- rettype -->
+	<leaf key="rettype" value="json" />
+	<!-- apicode -->
+	<leaf key="apicode" value="traffic_violation" />
+	<!-- 查询规则接口地址 -->
+	<leaf key="path1" value="http://apidatatest.datatang.com/data/credit/traffic_violation_supportCity" />
+	<!-- 查询违章接口地址 -->
+	<leaf key="path2" value="http://apidatatest.datatang.com/data/traffic_violation" />
+	
+	<!-- 数据堂配置段end -->
+	
+</content>

@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- 任务调度策略配置文件
+	策略分为两部分：job和trigger
+	job会有一个对应实现类，job名称即为配置的name，描述信息即为配置的des，job对应属于的组即为配置的group,class为对应具体job实现类，trigger为job需要绑定的触发器（多个可用,隔开）
+	trigger为触发器，即发生何种条件的情况下开始运行策略，此处目前只支持定时任务（listener类型日后添加），策略即为配置的cron表达式
+	
+	时间流程为：在有符合条件的trigger发生时，任务调度引擎调用与此trigger对应的job。当使用持久化存储时，name和group可确定唯一继续中断的任务
+	
+	需要注意的是，一个job可以对应多个trigger但是一个trigger只能对应一个job；故当不同的job配置相同的trigger的时候会相互冲突，切记切记！！
+ -->
+<content>
+	<job>
+		<leaf name="testSchedule" des="测试任务调度是否成功" 
+		group="testSchedule" clazz="com.ieven.ext.quartz.test.TestSchedule" 
+		trigger="testSchedule" />
+	</job>
+
+	<trigger>
+		<leaf name="testSchedule" group="testSchedule" cron="0/5 * * * * ?" des="测试任务调度是否成功"/>
+	</trigger>
+</content>

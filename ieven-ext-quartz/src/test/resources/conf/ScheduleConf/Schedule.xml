@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- 调度配置文件 -->
+<content>
+	<!-- 集群部署开关，开启为on（开启时需要在配置数据库中添加对应表，即运行对应sql脚本），关闭为off（目前关闭则使用默认配置） -->
+	<leaf key="cluster-switch" value="off"></leaf>
+	<common>
+		<!-- 任务调度实例名称 -->
+		<leaf key="org.quartz.scheduler.instanceName" value="rrc_schedule_service" />
+		<!-- 是否打开RMI支持(目前支持false) -->
+		<leaf key="org.quartz.scheduler.rmi.export" value="false" />
+		<!-- 是否打开RMI支持(目前支持false) -->
+		<leaf key="org.quartz.scheduler.rmi.proxy" value="false" />
+		<!-- 是否在用户指定的事务中运行任务(目前支持false) -->
+		<leaf key="org.quartz.scheduler.wrapJobExecutionInUserTransaction" value="false" />
+		<!-- 线程池使用的类名称 -->
+		<leaf key="org.quartz.threadPool.class" value="org.quartz.simpl.SimpleThreadPool" />
+		<!-- 线程池线程数 -->
+		<leaf key="org.quartz.threadPool.threadCount" value="5" />
+		<!-- 执行任务代码的线程的优先级 -->
+		<leaf key="org.quartz.threadPool.threadPriority" value="5" />
+		<!-- 加载任务代码的ClassLoader是否从外部继承 -->
+		<leaf key="threadsInheritContextClassLoaderOfInitializingThread" value="true" />
+		<!-- JobStore类配置，可选值有: 
+			#A:org.quartz.impl.jdbcjobstore.JobStoreTX，以公共数据库为任务仓库的实现类，支持集群 
+			#B:org.quartz.simpl.RAMJobStore，以本地内存为任务仓库的实现类，不支持集群
+			#C:暂时未开放，以分布式缓存为任务仓库的实现类，支持集群 
+			 -->
+		<leaf key="org.quartz.jobStore.class" value="org.quartz.simpl.RAMJobStore" />
+	</common>
+	<cluster>
+		<!-- 任务调度属性配置begin -->
+		<!-- 任务调度实例名称 -->
+		<leaf key="org.quartz.scheduler.instanceName" value="rrc_schedule_service" />
+		<!-- 任务调度实例id，默认使用auto即可，不写也是auto -->
+		<leaf key="org.quartz.scheduler.instanceId" value="auto" />
+		<!-- 任务调度属性配置end -->
+		
+		<!-- 任务调度线程池配置属性begin -->
+		<!-- 线程池使用的类名称 -->
+		<leaf key="org.quartz.threadPool.class" value="org.quartz.simpl.SimpleThreadPool" />
+		<!-- 线程池线程数 -->
+		<leaf key="org.quartz.threadPool.threadCount" value="5" />
+		<!-- 执行任务代码的线程的优先级 -->
+		<leaf key="org.quartz.threadPool.threadPriority" value="5" />
+		<!-- 加载任务代码的ClassLoader是否从外部继承 -->
+		<leaf key="threadsInheritContextClassLoaderOfInitializingThread" value="true" />
+		<!-- 任务调度线程池配置属性end -->
+		
+		<!-- 数据库连接池配置begin -->
+		<!-- 数据库驱动 -->
+		<leaf key="org.quartz.dataSource.inforService.driver" value="com.mysql.jdbc.Driver" />
+		<!-- 数据库url -->
+		<leaf key="org.quartz.dataSource.inforService.URL" value="jdbc:mysql://10.44.169.162:3306/infor_service?characterEncoding=utf8" />
+		<!-- 数据库账号 -->
+		<leaf key="org.quartz.dataSource.inforService.user" value="work" />
+		<!-- 数据库密码 -->
+		<leaf key="org.quartz.dataSource.inforService.password" value="lhKzxhM" />
+		<!-- 数据库连接池最大连接数 -->
+		<leaf key="org.quartz.dataSource.inforService.maxConnections" value="10" />
+		<!-- 数据库连接池配置end -->
+		
+		<!-- job存储begin -->
+		<!-- JobStore类配置，可选值有: 
+			#A:org.quartz.impl.jdbcjobstore.JobStoreTX，以公共数据库为任务仓库的实现类，支持集群 
+			#B:org.quartz.simpl.RAMJobStore，以本地内存为任务仓库的实现类，不支持集群
+			#C:暂时未开放，以分布式缓存为任务仓库的实现类，支持集群 
+			 -->
+		<leaf key="org.quartz.jobStore.class" value="org.quartz.impl.jdbcjobstore.JobStoreTX" />
+		<!-- 是否使用集群（此处为是否开启集群部署开关位置） -->
+		<leaf key="org.quartz.jobStore.isClustered" value="true" />
+		<!-- 通过JDBC访问数据库的代理类 -->
+		<leaf key="org.quartz.jobStore.driverDelegateClass" value="org.quartz.impl.jdbcjobstore.StdJDBCDelegate" />
+		<!-- 数据库中存储job表明的前缀 -->
+		<leaf key="org.quartz.jobStore.tablePrefix" value="QRTZ_" />
+		<!-- 集群的状态更新时间间隔（15000为15秒） -->
+		<leaf key="org.quartz.jobStore.clusterCheckinInterval" value="15000" />
+		<!-- 对应数据库信息名称，对应上面配置的数据库连接池配置名称 -->
+		<leaf key="org.quartz.jobStore.dataSource" value="inforService" />
+		<!-- job存储end -->
+		<!-- 以下为集群部署时配置信息end -->
+	</cluster>
+</content>

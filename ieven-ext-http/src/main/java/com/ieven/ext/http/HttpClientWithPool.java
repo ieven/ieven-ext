@@ -58,6 +58,11 @@ public class HttpClientWithPool extends HttpUtil{
 		/*
 		 * 根据配置文件设置httpclient各项属性 end
 		 */
+		logger.info("connectionRequestTimeout:"+httpConfigMap.get("connectionRequestTimeout"));
+		logger.info("connectTimeout:"+httpConfigMap.get("connectTimeout"));
+		logger.info("socketTimeout:"+httpConfigMap.get("socketTimeout"));
+		logger.info("maxTotal:"+httpConfigMap.get("maxTotal"));
+		logger.info("defaultMaxPerRoute:"+httpConfigMap.get("defaultMaxPerRoute"));
 	}
 
 	public <T> T executeHttp(HttpRequestBase httpRequest,ResponseHandler<T> handler){

@@ -1,0 +1,44 @@
+<?xml version="1.0"?>
+<project
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd"
+	xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+	<modelVersion>4.0.0</modelVersion>
+	<parent>
+		<groupId>com.ieven</groupId>
+		<artifactId>ieven-ext</artifactId>
+		<version>1.0.0</version>
+	</parent>
+	<groupId>com.ieven</groupId>
+	<artifactId>ieven-ext-quartz</artifactId>
+	<version>1.0.0</version>
+	<name>ieven-ext-quartz</name>
+
+	<properties>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<quartz.version>2.2.1</quartz.version>
+		<util.version>1.0.0</util.version>
+	</properties>
+	<dependencies>
+		<!-- 添加自己的工具 begin -->
+		<dependency>
+			<groupId>com.ieven</groupId>
+			<artifactId>ieven-ext-util</artifactId>
+			<version>${util.version}</version>
+		</dependency>
+		<!-- 添加自己的工具 end -->
+		<!-- quartz任务调度依赖 begin -->
+		<dependency>
+			<groupId>org.quartz-scheduler</groupId>
+			<artifactId>quartz-jobs</artifactId>
+			<version>${quartz.version}</version>
+			<scope>compile</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.quartz-scheduler</groupId>
+			<artifactId>quartz</artifactId>
+			<version>${quartz.version}</version>
+			<scope>compile</scope>
+		</dependency>
+		<!-- quartz任务调度依赖 end -->
+	</dependencies>
+</project>

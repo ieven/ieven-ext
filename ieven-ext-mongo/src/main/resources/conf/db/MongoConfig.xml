@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<content>
+	<!-- 数据库配置部分begin -->
+	
+	<!-- mongodb地址，多个可用","隔开,需要与下发的端口号一一对应 -->
+	<leaf key="mongoUrl" value="dds-2zef35a5e4a791641.mongodb.rds.aliyuncs.com,dds-2zef35a5e4a791642.mongodb.rds.aliyuncs.com" />
+	<!-- mongodb端口,多个可用","隔开 -->
+	<leaf key="mongoPort" value="3717,3717" />
+	<!-- mongodb数据库名称 -->
+	<leaf key="mongoDbName" value="rrc_business" />
+	<!-- mongodb数据库是否需要身份验证，默认为false -->
+	<leaf key="authentication" value="true" />
+	<!-- 认证库名称 -->
+	<leaf key="authenticationDbName" value="admin" />
+	<!-- mongodb数据库用户名，若无权限验证可为空 -->
+	<leaf key="userName" value="root" />
+	<!-- mongodb数据库密码，若无权限验证可为空 -->
+	<leaf key="password" value="iE559j7hEZTDOMpR" />
+	
+	<!-- 连接池配置begin -->
+	
+	<!-- 数据库描述 -->
+	<leaf key="description" value="" />
+	<!-- 每个host上最小连接数 -->
+	<leaf key="minConnectionsPerHost" value="" />
+	<!-- 每个host上最大连接数 -->
+	<leaf key="connectionsPerHost" value="" />
+	<!-- 线程队列数，它以上面maxConnectionsPerHost值相乘的结果就是线程队列最大值 -->
+	<leaf key="threadsAllowedToBlockForConnectionMultiplier" value="" />
+	<!-- 驱动程序在服务器选择时，无法成功执行而放弃和报告错误的时间间隔（以毫秒为单位），默认为30秒，这个时间对于一般的故障恢复阶段中选举出新主节点来说已经足够。 -->
+	<leaf key="serverSelectionTimeout" value="" />
+	<!-- 一个线程等待链接可用的最大等待毫秒数 -->
+	<leaf key="maxWaitTime" value="" />
+	<!-- 连接池中连接最大空闲时间 -->
+	<leaf key="maxConnectionIdleTime" value="" />
+	<!-- 连接池中一个连接存在的最长时间，0为无穷大 -->
+	<leaf key="maxConnectionLifeTime" value="" />
+	<!-- 链接超时的毫秒数,0表示不超时,此参数只用在新建一个新链接时 -->
+	<leaf key="connectTimeout" value="" />
+	<!-- 此参数表示socket I/O读写超时时间,推荐为不超时，即 0 -->
+	<leaf key="socketTimeout" value="" />
+	<!-- 该标志用于控制socket保持活动的功能，通过防火墙保持连接活着。
+	
+		true:假如链接不能建立时,驱动将重试相同的server,有最大的重试次数,默认为15次,这样可以避免一些server因为一些阻塞操作零时down而驱动抛出异常,这个对平滑过度到一个新的master,也是很有用的,注意:当集群为复制集时,驱动将在这段时间里,尝试链接到旧的master上,而不会马上链接到新master上
+	
+		false 当在进行socket读写时,不会阻止异常抛出,驱动已经有自动重建破坏链接和重试读操作. 推荐配置false -->
+	<leaf key="socketKeepAlive" value="" />
+	<!-- MongoDB读写分离时读的模式：
+		primary：主节点，默认模式，读操作只在主节点，如果主节点不可用，报错或者抛出异常。
+		primaryPreferred：首选主节点，大多情况下读操作在主节点，如果主节点不可用，如故障转移，读操作在从节点。
+		secondary：从节点，读操作只在从节点， 如果从节点不可用，报错或者抛出异常。
+		secondaryPreferred：首选从节点，大多情况下读操作在从节点，特殊情况（如单主节点架构）读操作在主节点。
+		nearest：最邻近节点，读操作在最邻近的成员，可能是主节点或者从节点。 -->
+	<leaf key="readPreference" value="" />
+	<!-- MongoDB读写分离时写的模式：
+		ACKNOWLEDGED：mongod只有在Apply（实际写入操作）完成之后，才会返回getLastError()的响应。所以如果写入时发生错误，driver就能捕获到，并进行处理。这个级别的write concern具备基本可靠性，也是目前mongodb的默认设置级别
+		FSYNC_SAFE和FSYNCED：抛出网络错误异常、服务器错误异常；写操作等待服务器将数据刷新到磁盘。
+		JOURNAL_SAFE：抛出网络错误异常、服务器错误异常；写操作等待服务器提交到磁盘的日志文件。
+		JOURNALED：mongodb服务器会确认写操作提交到journal log中，所以这个级别可以保证mongodb可以在意外宕机以后恢复出所有数据。当然这个级别必须保证你在服务器端开启了journaling ，并且每次都必须等待直到下一次journal log的提交，这时你可以尝试增大journal log的commit频率。
+		MAJORITY：抛出网络错误异常、服务器错误异常；写操作等待大多数服务器存储完成。
+		NORMAL：仅抛出网络错误异常，没有服务器错误异常，写到socket以后就返回
+		REPLICA_ACKNOWLEDGED：至少保证两台完成ACKNOWLEDGED操作。
+		 -->
+	<leaf key="writeConcern" value="" />
+	<!-- MongoDB读的模式：
+		DEFAULT：随版本不同有变动
+		LOCAL：一般读取
+		MAJORITY：将返回节点最新的且已经确认已经被写入其他majority节点的数据
+		 -->
+	<leaf key="readConcern" value="" />
+	
+	<!-- 连接池配置end -->
+	
+	<!-- 数据库配置部分end -->
+	
+</content>
