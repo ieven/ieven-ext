@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<content>
+	<!-- 车行易配置段begin -->
+	
+	<!-- 用户名 -->
+	<leaf key="userid" value="renrenche2016" />
+	<!-- 密码 -->
+	<leaf key="userpwd" value="kuXwB/pO6u9/v/AsDkgrtQ==" />
+	<!-- 查询规则接口地址 -->
+	<leaf key="path1" value="http://test.cx580.com:9000/InputsCondition.aspx" />
+	<!-- 查询违章接口地址 -->
+	<leaf key="path2" value="http://test.cx580.com:9000/queryindex.aspx" />
+	
+	<!-- 车行易配置段end -->
+	
+</content>

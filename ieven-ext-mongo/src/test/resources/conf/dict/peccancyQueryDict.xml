@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<content>
+	<!-- 异常错误字典begin -->
+	
+	<!-- carId -->
+	<leaf row="carId" des="上送的carId，与其他系统carId对等" />
+	<!-- xxx+param -->
+	<leaf row="xxx+param" des="上送第三方参数" />
+	<!-- xxx+sendTime -->
+	<leaf code="xxx+sendTime" des="上送第三方请求时间" />
+	<!-- status -->
+	<leaf code="status" des="本次处理状态 0：处理中 1：处理成功 2：处理失败" />
+	<!-- 异常错误字典end -->
+	
+</content>

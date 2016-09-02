@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<content>
+	<!-- 人人车api接口调用begin -->
+	
+	<!-- 根据car_id查询车辆信息,注意转义符&的使用需要转化为&amp; -->
+	<leaf key="carDetail" value="http://101.200.125.145:8082/api/index.php?d=car&amp;c=car&amp;m=detail" />
+	
+	<!-- 数据有效时间设置，以天为单位 -->
+	<leaf key="validity_period" value="30" />
+	
+	<!-- 人人车api接口调用end -->
+	
+</content>
