@@ -16,6 +16,7 @@
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<util.version>1.0.0</util.version>
+		<mongodb.version>3.2.2</mongodb.version>
 	</properties>
 	<dependencies>
 		<!-- 添加自己的工具 begin -->
@@ -25,5 +26,23 @@
 			<version>${util.version}</version>
 		</dependency>
 		<!-- 添加自己的工具 end -->
+		
+		<!-- 添加mongo依赖 begin -->
+		<dependency>
+			<groupId>org.mongodb</groupId>
+			<artifactId>mongodb-driver</artifactId>
+			<version>${mongodb.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.mongodb</groupId>
+			<artifactId>bson</artifactId>
+			<version>${mongodb.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.mongodb</groupId>
+			<artifactId>mongodb-driver-core</artifactId>
+			<version>${mongodb.version}</version>
+		</dependency>
+		<!-- 添加mongo依赖 end -->
 	</dependencies>
 </project>

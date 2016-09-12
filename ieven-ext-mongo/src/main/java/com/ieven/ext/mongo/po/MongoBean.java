@@ -5,7 +5,7 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
 
-import com.ieven.ext.mongo.conf.proxy.ConfigProxy;
+import com.ieven.ext.mongo.conf.MongoConfigProxy;
 import com.ieven.ext.util.excepiton.ConfigException;
 import com.ieven.ext.util.util.StringUtils;
 
@@ -57,6 +57,8 @@ public class MongoBean {
 	private String writeConcern;
 
 	private String readConcern;
+	
+	private MongoConfigProxy mongoConfig = new MongoConfigProxy();
 
 	public String getAuthenticationDbName() {
 		return authenticationDbName;
@@ -218,143 +220,152 @@ public class MongoBean {
 		this.password = password;
 	}
 
+	public MongoConfigProxy getMongoConfig() {
+		return mongoConfig;
+	}
+
+	public void setMongoConfig(MongoConfigProxy mongoConfig) {
+		this.mongoConfig = mongoConfig;
+	}
+
 	/**
 	 * 将mongo bean根据配置文件进行初始化
 	 */
+	@SuppressWarnings("unchecked")
 	public MongoBean init() {
-//		Map<String, String> configMap = ConfigProxy.getMongoConfigMap();
-//		List<String> mongoUrl = Arrays.asList(configMap.get("mongoUrl").split(","));
-//		List<String> mongoPortTemp = Arrays.asList(configMap.get("mongoPort").split(","));
-//		List<Integer> mongoPort = new ArrayList<>();
-//		for (String port : mongoPortTemp) {
-//			try {
-//				mongoPort.add(Integer.parseInt(port));
-//			} catch (Exception e) {
-//				// TODO: handle exception
-//				throw new ConfigException("mongo配置文件中端口:" + port + "配置不正确：只能为数字", e);
-//			}
-//		}
-//		if (mongoPort.size() != mongoUrl.size()) {
-//			throw new ConfigException("mongo配置文件中url与端口数量不匹配");
-//		}
-//		boolean authentication;
-//		try {
-//			authentication = Boolean.parseBoolean(configMap.get("authentication"));
-//		} catch (Exception e) {
-//			// TODO: handle exception
-//			throw new ConfigException("mongo配置文件中authentication配置不正确，只能为true或false");
-//		}
-//		if (!StringUtils.hasLength(configMap.get("mongoDbName"))) {
-//			throw new ConfigException("mongo配置文件中mongoDbName不能为空");
-//		}
-//		this.authentication = authentication;
-//		this.mongoDbName = configMap.get("mongoDbName");
-//		this.mongoPort = mongoPort;
-//		this.mongoUrl = mongoUrl;
-//		if (authentication && (!StringUtils.hasLength(configMap.get("userName"))
-//				|| !StringUtils.hasLength(configMap.get("authenticationDbName"))
-//				|| !StringUtils.hasLength(configMap.get("password")))) {
-//			throw new ConfigException("mongo配置文件中authentication为true时，userName、authenticationDbName和password不能为空");
-//		}
-//		this.password = configMap.get("password");
-//		this.userName = configMap.get("userName");
-//		this.authenticationDbName = configMap.get("authenticationDbName");
-//		// 以下为读取数据库连接池属性配置
-//		this.description = configMap.get("description");
-//		try {
-//			if (StringUtils.hasLength(configMap.get("minConnectionsPerHost"))) {
-//				this.minConnectionsPerHost = Integer.parseInt(configMap.get("minConnectionsPerHost"));
-//			}
-//		} catch (Exception e) {
-//			// TODO: handle exception
-//			throw new ConfigException("mongo配置文件中minConnectionsPerHost配置不正确，只能为数字");
-//		}
-//
-//		try {
-//			if (StringUtils.hasLength(configMap.get("connectionsPerHost"))) {
-//				this.connectionsPerHost = Integer.parseInt(configMap.get("connectionsPerHost"));
-//			}
-//		} catch (Exception e) {
-//			// TODO: handle exception
-//			throw new ConfigException("mongo配置文件中connectionsPerHost配置不正确，只能为数字");
-//		}
-//
-//		try {
-//			if (StringUtils.hasLength(configMap.get("threadsAllowedToBlockForConnectionMultiplier"))) {
-//				this.threadsAllowedToBlockForConnectionMultiplier = Integer
-//						.parseInt(configMap.get("threadsAllowedToBlockForConnectionMultiplier"));
-//			}
-//		} catch (Exception e) {
-//			// TODO: handle exception
-//			throw new ConfigException("mongo配置文件中threadsAllowedToBlockForConnectionMultiplier配置不正确，只能为数字");
-//		}
-//
-//		try {
-//			if (StringUtils.hasLength(configMap.get("serverSelectionTimeout"))) {
-//				this.serverSelectionTimeout = Integer.parseInt(configMap.get("serverSelectionTimeout"));
-//			}
-//		} catch (Exception e) {
-//			// TODO: handle exception
-//			throw new ConfigException("mongo配置文件中serverSelectionTimeout配置不正确，只能为数字");
-//		}
-//
-//		try {
-//			if (StringUtils.hasLength(configMap.get("maxWaitTime"))) {
-//				this.maxWaitTime = Integer.parseInt(configMap.get("maxWaitTime"));
-//			}
-//		} catch (Exception e) {
-//			// TODO: handle exception
-//			throw new ConfigException("mongo配置文件中maxWaitTime配置不正确，只能为数字");
-//		}
-//
-//		try {
-//			if (StringUtils.hasLength(configMap.get("maxConnectionIdleTime"))) {
-//				this.maxConnectionIdleTime = Integer.parseInt(configMap.get("maxConnectionIdleTime"));
-//			}
-//		} catch (Exception e) {
-//			// TODO: handle exception
-//			throw new ConfigException("mongo配置文件中maxConnectionIdleTime配置不正确，只能为数字");
-//		}
-//
-//		try {
-//			if (StringUtils.hasLength(configMap.get("maxConnectionLifeTime"))) {
-//				this.maxConnectionLifeTime = Integer.parseInt(configMap.get("maxConnectionLifeTime"));
-//			}
-//		} catch (Exception e) {
-//			// TODO: handle exception
-//			throw new ConfigException("mongo配置文件中maxConnectionLifeTime配置不正确，只能为数字");
-//		}
-//
-//		try {
-//			if (StringUtils.hasLength(configMap.get("connectTimeout"))) {
-//				this.connectTimeout = Integer.parseInt(configMap.get("connectTimeout"));
-//			}
-//		} catch (Exception e) {
-//			// TODO: handle exception
-//			throw new ConfigException("mongo配置文件中connectTimeout配置不正确，只能为数字");
-//		}
-//
-//		try {
-//			if (StringUtils.hasLength(configMap.get("socketTimeout"))) {
-//				this.socketTimeout = Integer.parseInt(configMap.get("socketTimeout"));
-//			}
-//		} catch (Exception e) {
-//			// TODO: handle exception
-//			throw new ConfigException("mongo配置文件中socketTimeout配置不正确，只能为数字");
-//		}
-//
-//		try {
-//			if (StringUtils.hasLength(configMap.get("socketKeepAlive"))) {
-//				this.socketKeepAlive = Boolean.parseBoolean(configMap.get("socketKeepAlive"));
-//			}
-//		} catch (Exception e) {
-//			// TODO: handle exception
-//			throw new ConfigException("mongo配置文件中socketKeepAlive配置不正确，只能为true或false");
-//		}
-//
-//		this.readPreference = configMap.get("readPreference");
-//		this.writeConcern = configMap.get("writeConcern");
-//		this.readConcern = configMap.get("readConcern");
+		Map<String, String> configMap = mongoConfig.getConfigMap();
+		List<String> mongoUrl = Arrays.asList(configMap.get("mongoUrl").split(","));
+		List<String> mongoPortTemp = Arrays.asList(configMap.get("mongoPort").split(","));
+		List<Integer> mongoPort = new ArrayList<>();
+		for (String port : mongoPortTemp) {
+			try {
+				mongoPort.add(Integer.parseInt(port));
+			} catch (Exception e) {
+				// TODO: handle exception
+				throw new ConfigException("mongo配置文件中端口:" + port + "配置不正确：只能为数字", e);
+			}
+		}
+		if (mongoPort.size() != mongoUrl.size()) {
+			throw new ConfigException("mongo配置文件中url与端口数量不匹配");
+		}
+		boolean authentication;
+		try {
+			authentication = Boolean.parseBoolean(configMap.get("authentication"));
+		} catch (Exception e) {
+			// TODO: handle exception
+			throw new ConfigException("mongo配置文件中authentication配置不正确，只能为true或false");
+		}
+		if (!StringUtils.hasLength(configMap.get("mongoDbName"))) {
+			throw new ConfigException("mongo配置文件中mongoDbName不能为空");
+		}
+		this.authentication = authentication;
+		this.mongoDbName = configMap.get("mongoDbName");
+		this.mongoPort = mongoPort;
+		this.mongoUrl = mongoUrl;
+		if (authentication && (!StringUtils.hasLength(configMap.get("userName"))
+				|| !StringUtils.hasLength(configMap.get("authenticationDbName"))
+				|| !StringUtils.hasLength(configMap.get("password")))) {
+			throw new ConfigException("mongo配置文件中authentication为true时，userName、authenticationDbName和password不能为空");
+		}
+		this.password = configMap.get("password");
+		this.userName = configMap.get("userName");
+		this.authenticationDbName = configMap.get("authenticationDbName");
+		// 以下为读取数据库连接池属性配置
+		this.description = configMap.get("description");
+		try {
+			if (StringUtils.hasLength(configMap.get("minConnectionsPerHost"))) {
+				this.minConnectionsPerHost = Integer.parseInt(configMap.get("minConnectionsPerHost"));
+			}
+		} catch (Exception e) {
+			// TODO: handle exception
+			throw new ConfigException("mongo配置文件中minConnectionsPerHost配置不正确，只能为数字");
+		}
+
+		try {
+			if (StringUtils.hasLength(configMap.get("connectionsPerHost"))) {
+				this.connectionsPerHost = Integer.parseInt(configMap.get("connectionsPerHost"));
+			}
+		} catch (Exception e) {
+			// TODO: handle exception
+			throw new ConfigException("mongo配置文件中connectionsPerHost配置不正确，只能为数字");
+		}
+
+		try {
+			if (StringUtils.hasLength(configMap.get("threadsAllowedToBlockForConnectionMultiplier"))) {
+				this.threadsAllowedToBlockForConnectionMultiplier = Integer
+						.parseInt(configMap.get("threadsAllowedToBlockForConnectionMultiplier"));
+			}
+		} catch (Exception e) {
+			// TODO: handle exception
+			throw new ConfigException("mongo配置文件中threadsAllowedToBlockForConnectionMultiplier配置不正确，只能为数字");
+		}
+
+		try {
+			if (StringUtils.hasLength(configMap.get("serverSelectionTimeout"))) {
+				this.serverSelectionTimeout = Integer.parseInt(configMap.get("serverSelectionTimeout"));
+			}
+		} catch (Exception e) {
+			// TODO: handle exception
+			throw new ConfigException("mongo配置文件中serverSelectionTimeout配置不正确，只能为数字");
+		}
+
+		try {
+			if (StringUtils.hasLength(configMap.get("maxWaitTime"))) {
+				this.maxWaitTime = Integer.parseInt(configMap.get("maxWaitTime"));
+			}
+		} catch (Exception e) {
+			// TODO: handle exception
+			throw new ConfigException("mongo配置文件中maxWaitTime配置不正确，只能为数字");
+		}
+
+		try {
+			if (StringUtils.hasLength(configMap.get("maxConnectionIdleTime"))) {
+				this.maxConnectionIdleTime = Integer.parseInt(configMap.get("maxConnectionIdleTime"));
+			}
+		} catch (Exception e) {
+			// TODO: handle exception
+			throw new ConfigException("mongo配置文件中maxConnectionIdleTime配置不正确，只能为数字");
+		}
+
+		try {
+			if (StringUtils.hasLength(configMap.get("maxConnectionLifeTime"))) {
+				this.maxConnectionLifeTime = Integer.parseInt(configMap.get("maxConnectionLifeTime"));
+			}
+		} catch (Exception e) {
+			// TODO: handle exception
+			throw new ConfigException("mongo配置文件中maxConnectionLifeTime配置不正确，只能为数字");
+		}
+
+		try {
+			if (StringUtils.hasLength(configMap.get("connectTimeout"))) {
+				this.connectTimeout = Integer.parseInt(configMap.get("connectTimeout"));
+			}
+		} catch (Exception e) {
+			// TODO: handle exception
+			throw new ConfigException("mongo配置文件中connectTimeout配置不正确，只能为数字");
+		}
+
+		try {
+			if (StringUtils.hasLength(configMap.get("socketTimeout"))) {
+				this.socketTimeout = Integer.parseInt(configMap.get("socketTimeout"));
+			}
+		} catch (Exception e) {
+			// TODO: handle exception
+			throw new ConfigException("mongo配置文件中socketTimeout配置不正确，只能为数字");
+		}
+
+		try {
+			if (StringUtils.hasLength(configMap.get("socketKeepAlive"))) {
+				this.socketKeepAlive = Boolean.parseBoolean(configMap.get("socketKeepAlive"));
+			}
+		} catch (Exception e) {
+			// TODO: handle exception
+			throw new ConfigException("mongo配置文件中socketKeepAlive配置不正确，只能为true或false");
+		}
+
+		this.readPreference = configMap.get("readPreference");
+		this.writeConcern = configMap.get("writeConcern");
+		this.readConcern = configMap.get("readConcern");
 		return this;
 	}
 

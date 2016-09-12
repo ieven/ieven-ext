@@ -45,7 +45,8 @@
 	<modules>
 		<module>ieven-ext-util</module>
 		<module>ieven-ext-http</module>
-    <module>ieven-ext-mongo</module>
-    <module>ieven-ext-quartz</module>
+    	<module>ieven-ext-mongo</module>
+    	<module>ieven-ext-quartz</module>
+    <module>ieven-ext-time</module>
   </modules>
 </project>

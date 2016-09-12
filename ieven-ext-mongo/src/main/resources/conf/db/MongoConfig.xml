@@ -3,19 +3,19 @@
 	<!-- 数据库配置部分begin -->
 	
 	<!-- mongodb地址，多个可用","隔开,需要与下发的端口号一一对应 -->
-	<leaf key="mongoUrl" value="dds-2zef35a5e4a791641.mongodb.rds.aliyuncs.com,dds-2zef35a5e4a791642.mongodb.rds.aliyuncs.com" />
+	<leaf key="mongoUrl" value="" />
 	<!-- mongodb端口,多个可用","隔开 -->
-	<leaf key="mongoPort" value="3717,3717" />
+	<leaf key="mongoPort" value="" />
 	<!-- mongodb数据库名称 -->
-	<leaf key="mongoDbName" value="rrc_business" />
+	<leaf key="mongoDbName" value="" />
 	<!-- mongodb数据库是否需要身份验证，默认为false -->
-	<leaf key="authentication" value="true" />
+	<leaf key="authentication" value="" />
 	<!-- 认证库名称 -->
-	<leaf key="authenticationDbName" value="admin" />
+	<leaf key="authenticationDbName" value="" />
 	<!-- mongodb数据库用户名，若无权限验证可为空 -->
-	<leaf key="userName" value="root" />
+	<leaf key="userName" value="" />
 	<!-- mongodb数据库密码，若无权限验证可为空 -->
-	<leaf key="password" value="iE559j7hEZTDOMpR" />
+	<leaf key="password" value="" />
 	
 	<!-- 连接池配置begin -->
 	
