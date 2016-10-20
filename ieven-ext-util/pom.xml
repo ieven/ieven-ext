@@ -19,6 +19,7 @@
 		<dom4j.version>1.6.1</dom4j.version>
 		<jaxen.version>1.1.1</jaxen.version>
 		<beanutils.version>1.8.3</beanutils.version>
+		<springcore.version>4.3.2.RELEASE</springcore.version>
 	</properties>
 
 	<dependencies>
@@ -41,5 +42,12 @@
 			<version>${dom4j.version}</version>
 		</dependency>
 		<!-- 解析xml end -->
+		<!-- spring core begin -->
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-core</artifactId>
+			<version>${springcore.version}</version>
+		</dependency>
+		<!-- spring core end -->
 	</dependencies>
 </project>
