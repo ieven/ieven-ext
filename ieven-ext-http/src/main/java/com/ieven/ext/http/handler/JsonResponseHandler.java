@@ -25,22 +25,29 @@ public class JsonResponseHandler implements ResponseHandler<JsonNode>{
 	@Override
 	public JsonNode handleResponse(HttpResponse response) throws ClientProtocolException, IOException, HttpResponseException {
 		// TODO Auto-generated method stub
-		int status = response.getStatusLine().getStatusCode();
-		if (status >= 200 && status < 300) {
-			HttpEntity entity = response.getEntity();
-	        try {
-	            InputStream stream = entity.getContent();
-	            return MAPPER.readTree(stream);
-	        } finally {
-	            EntityUtils.consume(entity);
-	        }
-		}
-		else
-		{
-			//当返回非正常状态时抛出异常
-			throw new HttpResponseException(status, "请求失败");
-		}
-		
+		HttpEntity entity = response.getEntity();
+        try {
+            InputStream stream = entity.getContent();
+            return MAPPER.readTree(stream);
+        } finally {
+            EntityUtils.consume(entity);
+        }
+        //由于有人会自定义返回码，不能按照常理出牌
+//		int status = response.getStatusLine().getStatusCode();
+//		if (status >= 200 && status < 300) {
+//			HttpEntity entity = response.getEntity();
+//	        try {
+//	            InputStream stream = entity.getContent();
+//	            return MAPPER.readTree(stream);
+//	        } finally {
+//	            EntityUtils.consume(entity);
+//	        }
+//		}
+//		else
+//		{
+//			//当返回非正常状态时抛出异常
+//			throw new HttpResponseException(status, "请求失败");
+//		}
 	}
 
 }
