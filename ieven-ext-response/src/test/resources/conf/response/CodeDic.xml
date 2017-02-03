@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<content>
+	<!-- 返回码及其对应解释begin -->
+	
+	<!-- 正常返回 -->
+	<leaf key="0" value="处理成功" />
+	<!-- 未知异常 -->
+	<leaf key="-1" value="未知异常" />
+	
+	<!-- 返回码及其对应解释end -->
+	
+</content>

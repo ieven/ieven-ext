@@ -13,18 +13,13 @@ import com.ieven.ext.util.io.Resource;
  */
 public class HttpConfigProxy {
 	
-	/**
-	 * 配置文件路径
-	 */
-	private static final String CONFIG_PATH = "conf/http/HttpConfig.xml";
-	
 	private RegisterConfig config;
 	
 	public HttpConfigProxy() {
 		// TODO Auto-generated constructor stub
 		//若存在外部文件conf/http/HttpConfig.xml则使用FileSystemResource初始化
 		config = new HttpConfig();
-		Resource resource = new FileSystemResource(CONFIG_PATH);
+		Resource resource = new FileSystemResource(ConfigProperty.CONFIG_PATH);
 		if(resource.exists()){
 			RegisterConfig configTemp = new HttpConfigWithFileSystemResource();
 			config.getConfigMap().putAll(configTemp.getConfigMap());

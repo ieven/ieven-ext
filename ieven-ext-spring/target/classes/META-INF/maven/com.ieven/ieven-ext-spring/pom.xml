@@ -1,0 +1,42 @@
+<?xml version="1.0"?>
+<project
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd"
+	xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+	<modelVersion>4.0.0</modelVersion>
+	<parent>
+		<groupId>com.ieven</groupId>
+		<artifactId>ieven-ext</artifactId>
+		<version>1.0.0</version>
+	</parent>
+	<groupId>com.ieven</groupId>
+	<artifactId>ieven-ext-spring</artifactId>
+	<version>1.0.0</version>
+	<name>ieven-ext-spring</name>
+	
+	<dependencyManagement>
+		<dependencies>
+			<!-- springboot依赖 begin -->
+			<dependency>
+				<groupId>org.springframework.boot</groupId>
+				<artifactId>spring-boot-dependencies</artifactId>
+				<version>${spring-boot.version}</version>
+				<type>pom</type>
+				<scope>import</scope>
+			</dependency>
+			<!-- springboot依赖 end -->
+		</dependencies>
+	</dependencyManagement>
+	
+	<properties>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<spring-boot.version>1.4.1.RELEASE</spring-boot.version>
+	</properties>
+	<dependencies>
+		<!-- springboot依赖 begin -->
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-autoconfigure</artifactId>
+		</dependency>
+		<!-- springboot依赖 end -->
+	</dependencies>
+</project>
